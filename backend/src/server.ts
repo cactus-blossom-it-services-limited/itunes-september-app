@@ -5,14 +5,9 @@ const app: Application = express();
 
 
 // Configuration
-const PORT = 3000;
+const PORT = 4000;
 const HOST = "localhost";
 const API_SERVICE_URL = "https://itunes.apple.com/search";
-
-// Info GET endpoint
-// app.get('/info', (req, res, next) => {
-//     res.send('This is a proxy service which proxies to Billing and Account APIs.');
-//  });
 
 // Not found middleware
 function routesNotFound(req: RequestHandler, res: Response, next: Ne) {
