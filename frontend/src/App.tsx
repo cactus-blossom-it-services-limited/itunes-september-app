@@ -1,20 +1,23 @@
 import React from "react";
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
-
-import { albumApi, Album } from "./store";
-
-function AlbumApp() {
-  const { data: albums } = albumApi.useGetAllQuery();
-  return <div className="App">
-    {JSON.stringify(albums)}
-  </div>;
-}
+import { useItunesQuery } from './services/itunesApi';
 
 function App() {
+  const { data, error, isLoading, isFetching,isSuccess } = useItunesQuery();
+  console.log(data);
   return (
-    <ApiProvider api={albumApi}>
-      <AlbumApp />
-    </ApiProvider>
+    <div className="App">
+      <h1>RTK Query Test</h1>
+      {isLoading && <h2>...Loading</h2>}
+      {isFetching && <h2>...isFetching</h2>}
+      {error && <h2>Something went wrong</h2>}
+      {isSuccess && (
+        <div>
+            return <div className="data">
+              <span>{JSON.stringify(data)}</span>
+            </div>
+        </div>
+      )}
+    </div>
   );
 }
 
