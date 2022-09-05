@@ -15,11 +15,11 @@ export interface Album {
 
 export const albumApi = createApi({
     reducerPath: "albumApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "https://itunes.apple.com/lookup"}),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000/search/"}),
     tagTypes: ['Albums'],
     endpoints: (builder) => ({
         getAll: builder.query<Album[], void>({
-            query: () => `?id=909253&entity=album`,
+            query: () => `?term=jack+johnson`,
             providesTags: [{ type: "Albums", id: "LIST" }],
         }),
     }),

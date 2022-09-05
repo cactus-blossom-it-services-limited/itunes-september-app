@@ -7,10 +7,10 @@ const app: Application = express();
 // Configuration
 const PORT = 4000;
 const HOST = "localhost";
-const API_SERVICE_URL = "https://itunes.apple.com/search";
+const API_SERVICE_URL = "https://itunes.apple.com";
 
 // Not found middleware
-function routesNotFound(req: RequestHandler, res: Response, next: Ne) {
+function routesNotFound(req: RequestHandler, res: Response, next: NextFunction) {
     res.status(404)
     const error = new Error('Not found')
     next(error)
@@ -26,7 +26,7 @@ function errorHandler(err: Error, req: RequestHandler, res: Response) {
 }
 
 // Proxy endpoints
-app.use('/api', createProxyMiddleware({ target: API_SERVICE_URL, changeOrigin: true }));
+app.use('/search', createProxyMiddleware({ target: API_SERVICE_URL, changeOrigin: true }));
 app.use(routesNotFound);
 app.use(errorHandler);
 
