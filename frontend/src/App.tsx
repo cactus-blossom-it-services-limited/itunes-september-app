@@ -12,7 +12,7 @@ function App() {
       {isSuccess && (
         <div>
             <div className="data">
-              <span>{JSON.stringify(itunes.results[0])}</span>
+              <span>{JSON.stringify(itunes.results[0].wrapperType)}</span>
             </div>
         </div>
       )}

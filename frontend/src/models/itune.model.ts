@@ -2,9 +2,5 @@ import { ResultDescription } from "@reduxjs/toolkit/dist/query/endpointDefinitio
 
 export interface Itune {
     resultCount?: number;
-    results: [Object];
-    wrapperType: string;
-    kind: string;
-    artistId: number;
-    artistName: string; 
+    results: [{wrapperType: string; kind: string; artistId: number; artistName: string;}];
 }
